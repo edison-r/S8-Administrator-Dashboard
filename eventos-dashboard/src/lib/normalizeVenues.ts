@@ -9,6 +9,16 @@ export function normalizeVenue(v:RawVenue): Venue | null {
 
     const category = v.classifications_data?.[0]?.name;
     const addr = v.addresses?.[0];
+    const events = (v.to_relationships ?? [])
+    .map(r => r.from_entity_data)
+    .filter(Boolean)
+    .map(e => ({
+        id: e!.id,
+        title: e!.name,
+        start: e!.start_date ?? undefined,
+        end: e!.end_date ?? undefined,
+    }))
+    ;
 
     return {
         id: v.register_id,
@@ -19,6 +29,7 @@ export function normalizeVenue(v:RawVenue): Venue | null {
         neighborhood: addr?.neighborhood_name,
         zip: addr?.zip_code,
         category,
+        events,
     };
 }
 

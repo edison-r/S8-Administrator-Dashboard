@@ -36,16 +36,21 @@ export default function MapsPage() {
                     </Marker>
                 ))}
                 {selected && (() => {
-                const v = venues.find(x => x.id === selected)!;
-                return (
-                    <Popup latitude={v.lat} longitude={v.lon} onClose={() => setSelected(null)}>
-                    <div className="space-y-1">
-                        <div className="font-semibold">{v.name}</div>
-                        {v.district && <div className="text-xs">{v.district} · {v.neighborhood}</div>}
-                        {v.category && <div className="text-xs opacity-70">{v.category}</div>}
-                    </div>
-                    </Popup>
-                );
+                    const v = venues.find(x => x.id === selected)!;
+                    return (
+                        <Popup latitude={v.lat} longitude={v.lon} onClose={() => setSelected(null)}>
+                            <div className="space-y-1">
+                                <div className="font-semibold">{v.name}</div>
+                                {v.district && <div className="text-xs">{v.district} · {v.neighborhood}</div>}
+                                {v.category && <div className="text-xs opacity-70">{v.category}</div>}
+                                {v.events && v.events.length > 0 && (
+                                    <div className="text-xs">
+                                        Próximos eventos: {v.events.slice(0,3).map((e) => e.title).join(", ")}
+                                    </div>
+                                )}
+                            </div>
+                        </Popup>
+                        );
                 })()}
             </Map>
         </div>

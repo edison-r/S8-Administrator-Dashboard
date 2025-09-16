@@ -12,6 +12,14 @@ export type RawVenue = {
   }>;
   geo_epgs_4326_latlon?: { lat: number; lon: number };
   classifications_data?: Array<{ id: number; name: string }>;
+  to_relationships?: Array<{
+    from_entity_data?: {
+      id: number,
+      name: string,
+      start_date?: string | null,
+      end_date?: string | null;
+    };
+  }>;
 };
 
 export type Venue = {
@@ -23,4 +31,5 @@ export type Venue = {
   neighborhood?: string;
   category?: string;
   zip?: string;
+  events?: Array<{ id: number; title: string; start?: string; end?: string }>
 };
