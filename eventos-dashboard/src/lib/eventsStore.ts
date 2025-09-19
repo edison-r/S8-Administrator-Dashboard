@@ -1,7 +1,7 @@
 import { EventItem, NewEventInput } from "@/types/events"; 
 import { customAlphabet } from "nanoid";
 import path from "path";
-import { promises as fs, write } from "fs"; 
+import { promises as fs } from "fs"; 
 
 const nanoid = customAlphabet("0123456789abcdefghijklmnopqrstuvwxyz", 12); // crea id único con el import de nanoid
 const FILE = path.join(process.cwd(), "src/data/events.json");

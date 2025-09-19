@@ -21,6 +21,7 @@ export default function RootLayout({children}: { children: React.ReactNode}){
                 <Link href="/dashboard/maps" className="p-1 hover:underline">Mapa</Link>
                 <Link href="/dashboard/calendar" className="p-1 hover:underline">Calendario</Link>
                 <Link href="/dashboard/charts" className="p-1 hover:underline">Charts</Link>
+                <Link href="/dashboard/create-event" className="p-1 hover:underline">Crear Evento</Link>
               </nav>
             </aside>
             <main className="col-span-12 md:col-span-10 p-6">{children}</main>
