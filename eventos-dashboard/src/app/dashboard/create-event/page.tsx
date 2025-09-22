@@ -16,7 +16,7 @@ const Schema = z.object({
   venueId: z.number(),
 });
 
-type FormData = z.infer<typeof Schema>;
+type FormData = z.infer<typeof Schema>; // !! muy interesante
 
 export default function CreateEventPage() {
   const router = useRouter();
